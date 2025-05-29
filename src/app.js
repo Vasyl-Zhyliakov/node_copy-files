@@ -7,10 +7,12 @@ function copy() {
 
   if (!fileName || !fileCopy) {
     console.error('Need more arguments');
+    return;
   }
 
   if (fileName === fileCopy) {
     console.error('Source and destination are the same');
+    return;
   }
 
   let data;
@@ -19,12 +21,14 @@ function copy() {
     data = fs.readFileSync(fileName, 'utf8');
   } catch (err) {
     console.error(err);
+    return;
   }
 
   try {
     fs.writeFileSync(fileCopy, data);
   } catch (err) {
     console.error(err);
+    return;
   }
 }
 
